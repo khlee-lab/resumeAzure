@@ -21,14 +21,15 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  // Enable static export for Azure Static Web Apps
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'out',
 }
 
 mergeConfig(nextConfig, userConfig)
 
-// Azure 배포 환경 설정: AZURE_STATIC_WEB_APP 환경변수가 true일 때 trailingSlash 옵션 활성화
-if (process.env.AZURE_STATIC_WEB_APP === 'true') {
-  nextConfig.trailingSlash = true;
-}
+// Azure Static Web Apps configuration
 
 function mergeConfig(nextConfig, userConfig) {
   if (!userConfig) {
